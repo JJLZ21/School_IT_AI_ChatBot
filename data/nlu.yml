@@ -1,0 +1,219 @@
+version: "3.0"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - thx
+      - I don't think so
+      - no thx
+      - thank you
+      - not really
+
+  - intent: stop
+    examples: |
+      - stop
+      - nevermind
+      - please stop
+      - i want to stop
+      - stop the help
+      - no need
+
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
+
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+
+  - intent: ask_h
+    examples: |
+      - Help!
+      - I need help
+      - Please help
+      - SOS
+      - Do me a favor
+      - I need addvice
+      - I need tech support
+      - Tech support plx
+
+  - intent: wifi_password
+    examples: |
+      - I forgot the wifi password
+      - Could u tell me what is the guest password
+      - what is the wifi password?
+      - Do you know the wifi password?
+      - I need to connect to the wifi
+      - How I can connect to the wifi?
+      - please tell me what is the wifi password
+      - wifi password
+      - password for WORK-guest wifi
+
+  - intent: wifi_issue
+    examples: |
+      - I have a wifi issue
+      - please help my with wifi
+      - My wifi is so slow
+
+  - intent: print_issue
+    examples: |
+      - I can not print
+      - I could not print
+      - I can not connecter to printer
+      - I have a printer issue
+      - I have a printing issue
+      - Please help with my computer, I got a printing issue
+      - I can not print to 1st floor printer
+      - plx help with my printing issue
+
+  - intent: login_issue
+    examples: |
+      - I could not login to my powerschool
+      - I could not login to my device
+      - I can not login
+      - I have trouble login to my account
+      - Please help, I could not login
+
+  - regex: room_number
+    examples: |
+      - ^[0-9]{1,3}$
+
+  - intent: room_inform
+    examples: |
+      - [123](room_number)
+      - [415](room_number)
+      - [388](room_number)
+      - [250](room_number)
+      - room [123](room_number)
+      - room [415](room_number)
+      - room [388](room_number)
+      - room [250](room_number)
+
+  - intent: require_in_person
+    examples: |
+      - Please come to room
+      - plx come 
+      - plx came [234](room_number)
+      - I need help at room 
+      - I need help at [123](room_number)
+      - I need help at room [234](room_number)
+      - I need help at 
+      - do you have time to stay by room [789](room_number)
+      - may I request to you stop by room [234](room_number)
+      - If you have time, could you come [234](room_number)
+      - if you have time, could you stop by room [234](room_number)
+      - can you come to [234](room_number)
+      - could to come to [234](room_number)
+
+  - regex: device_number
+    examples: |
+      - ^[0-9]{1,2}$
+
+  - intent: device_number_inform
+    examples: |
+      - [12](device_number)
+      - [5](device_number)
+      - [1](device_number)
+      - [3](device_number)
+      - [10](device_number)
+
+  - intent: borrow_item
+    examples: |
+      - Can I borrow [10](device_number) [headphones](device)
+      - I need to borrow [1](device_number) [macbooks](device)
+      - borrow headphone [9](device_number) [ipads](device)
+      - loan me [10](device_number) [iphone](device)
+      - gave me [10](device_number) [pc](device)
+      - I want [10](device_number) [mic](device)
+      - buy me [10](device_number) [amplifer](device)
+      - Can I borrow  [headphones](device)
+      - I need to borrow  [macbooks](device)
+      - borrow headphone [ipads](device)
+      - loan me  [iphone](device)
+      - gave me  [pc](device)
+      - I want  [mic](device)
+      - buy me  [amplifer](device)
+      - Can I borrow
+      - I want to borrow
+      - I want to borrow [headphonr](device)
+
+  - intent: device_name_inform
+    examples: |
+      - [heedphone](device)
+      - [headphonr](device)
+      - [macbooks](device)
+      - [macbook](device)
+      - [amplifer](device)

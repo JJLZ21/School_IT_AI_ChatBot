@@ -1,0 +1,129 @@
+version: "3.0"
+
+stories:
+  - story: happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+
+  - story: sad path 1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: affirm
+      - action: utter_happy
+
+  - story: sad path 2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+      - action: utter_goodbye
+
+  - story: ask question back
+    steps:
+      - intent: ask_h
+      - action: utter_follow_up
+
+  - story: support
+    steps:
+      - intent: wifi_issue
+      - action: utter_wifi_issue
+      - intent: wifi_password
+      - action: utter_wifi_password
+      - action: utter_follow_up
+
+  - story: support1
+    steps:
+      - intent: wifi_password
+      - action: utter_wifi_password
+      - action: utter_follow_up
+
+  - story: support 2
+    steps:
+      - intent: login_issue
+      - action: utter_login_issue
+      - action: utter_follow_up
+
+  - story: support3
+    steps:
+      - intent: print_issue
+      - action: utter_print_issue
+      - action: utter_follow_up
+
+  - story: support4
+    steps:
+      - intent: require_in_person
+      - action: action_comfirm_form
+      - active_loop: action_comfirm_form
+      - slot_was_set:
+          - requested_slot: room_number
+      - slot_was_set:
+          - room_number: 123
+      - slot_was_set:
+          - room_number: null
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_require_in_person
+      - action: action_reset_slots
+      - action: utter_follow_up
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: support 5
+    steps:
+      - intent: borrow_item
+      - action: action_device_form
+      - active_loop: action_device_form
+      - slot_was_set:
+          - requested_slot: device_number
+      - slot_was_set:
+          - device_number: 10
+      - slot_was_set:
+          - device_number: null
+      - slot_was_set:
+          - requested_slot: device
+      - slot_was_set:
+          - device: headphone
+      - slot_was_set:
+          - device: macbooks
+      - slot_was_set:
+          - device: ipads
+      - slot_was_set:
+          - device: null
+      - slot_was_set:
+          - device: other
+      - slot_was_set:
+          - requested_slot: device
+      - slot_was_set:
+          - device: headbhone
+      - slot_was_set:
+          - device: macbioks
+      - slot_was_set:
+          - device: ipsds
+      - slot_was_set:
+          - device: null
+      - slot_was_set:
+          - device: other
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_allow_borrow
+      - action: action_reset_slots
+      - action: utter_follow_up
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: thank path
+    steps:
+      - intent: deny
+      - action: utter_thank_you

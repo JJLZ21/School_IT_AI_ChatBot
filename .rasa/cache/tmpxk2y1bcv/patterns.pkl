@@ -1,0 +1,10 @@
+[
+  {
+    "name": "device_number",
+    "pattern": "\\d{1,3}"
+  },
+  {
+    "name": "room_number",
+    "pattern": "\\d{1,4}"
+  }
+]

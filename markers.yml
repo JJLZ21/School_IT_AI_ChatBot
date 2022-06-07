@@ -1,0 +1,12 @@
+marker_start_end_room_number_form:
+  seq:
+    - intent: require_in_person
+    - action: utter_require_in_person
+
+marker_room_number_not_set_immediately:
+  seq:
+    - intent: require_in_person
+    - action: action_ask_room_number
+    - not:
+        - slot_was_set: room_number
+    - slot_was_set: room_number

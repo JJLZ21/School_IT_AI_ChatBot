@@ -1,0 +1,7 @@
+{
+  "rule_only_slots": [],
+  "rule_only_loops": [
+    "action_comfirm_form",
+    "action_device_form"
+  ]
+}

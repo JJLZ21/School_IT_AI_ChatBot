@@ -1,0 +1,6 @@
+[
+  {
+    "name": "room_number",
+    "pattern": "\\d{1,4}"
+  }
+]

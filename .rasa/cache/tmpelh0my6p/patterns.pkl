@@ -1,0 +1,6 @@
+[
+  {
+    "name": "device_number",
+    "pattern": "\\d{1,2}"
+  }
+]

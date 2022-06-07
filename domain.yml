@@ -1,0 +1,151 @@
+version: "3.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - wifi_issue
+  - print_issue
+  - login_issue
+  - require_in_person
+  - ask_h
+  - stop
+  - borrow_item
+  - room_inform
+  - device_number_inform
+  - device_name_inform
+  - wifi_password
+
+entities:
+  - room_number
+  - device_number
+  - device
+
+slots:
+  room_number:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: room_number
+  device_number:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: device_number
+  device:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: device
+
+forms:
+  action_comfirm_form:
+    ignored_intents:
+      - device_number_inform
+      - device_name_inform
+    required_slots:
+      - room_number
+  action_device_form:
+    ignored_intents:
+      - require_in_person
+      - room_inform
+    required_slots:
+      - device
+      - device_number
+
+responses:
+  utter_please_rephrase:
+    - text: "How can I help you? Please select or briefly tell me what is your concern."
+      buttons:
+        - title: "Wifi Issue"
+          payload: "/wifi_issue"
+        - title: "Print Issue"
+          payload: "/print_issue"
+        - title: "Login Issue"
+          payload: "/login_issue"
+        - title: "In Person Support"
+          payload: "/require_in_person"
+        - title: "Need/Borrow Device"
+          payload: "/borrow_item"
+
+  utter_follow_up:
+    - text: "What else I can help you?"
+      buttons:
+        - title: "Wifi Issue"
+          payload: "/wifi_issue"
+        - title: "Print Issue"
+          payload: "/print_issue"
+        - title: "Login Issue"
+          payload: "/login_issue"
+        - title: "In Person Support"
+          payload: "/require_in_person"
+        - title: "Need/Borrow Device"
+          payload: "/borrow_item"
+
+  utter_thank_you:
+    - text: "Great, Let me know if you have any question raise."
+
+  utter_greet:
+    - text: "Hey! How are you?"
+
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+
+  utter_happy:
+    - text: "Great, carry on!"
+
+  utter_goodbye:
+    - text: "Bye"
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+  utter_wifi_issue:
+    - text: "Please try to restart your computer and re-connect to the guest wifi."
+      buttons:
+        - title: "WORK-guest Wifi Password"
+          payload: "/utter_wifi_password"
+
+  utter_wifi_password:
+    - text: "The SSID/name for the wifi: WORK-guest, the password: guestPassword."
+
+  utter_print_issue:
+    - text: "Please try to restart your computer and printer to see if it will fix the issue. Have a good day."
+
+  utter_login_issue:
+    - text: "Please try again after you clean up your browsing history and cache. For more direction please check here: https://cleanbrowsing.org/guides/clearing-dns-cache-on-your-browser/. Have a good day."
+
+  utter_ask_room_number:
+    - text: "Please enter your 3 digits room so that our IT can find you. Have a good day."
+
+  utter_require_in_person:
+    - text: "I will leave a message to our IT team and they will go to your room you shortly. Have a good day."
+
+  utter_ask_questions:
+    - text: "How can I help you? Please briefly tell me what is your concern. Thank you."
+
+  utter_allow_borrow:
+    - text: "Your request to borrow {device_number} {device} has sent and processed. Have a good day."
+
+  utter_device:
+    - text: "I don't recognize that devices. We only have headphone, ipad, and macbook. Please Re-enter."
+
+  utter_device_number:
+    - text: "Please enter how many do you want to need. Thank you."
+
+actions:
+  - validate_action_comfirm_form
+  - validate_action_device_form
+  - action_reset_slots
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
